@@ -43,6 +43,11 @@ Usage: ./axs [OPTIONS] target
 Passing the `-resolve` flag with a target will generate the access command,
 but will print it instead of executing it.
 
+## Completions
+
+Completions are only available for `zsh`. Download the `completion/axs.zsh`
+file and source it in your `~/.zshrc`.
+
 ### Example
 
 Given the following configuration:
