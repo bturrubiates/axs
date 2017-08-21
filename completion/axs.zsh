@@ -5,6 +5,7 @@ _axs() {
     arguments=(
         '(- :)-list[list targets]'
         '(-resolve -list)-resolve[resolve a target]'
+        '-config=-[specify config file]:config:_files'
         '1: :->target'
     )
 
