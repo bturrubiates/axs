@@ -85,6 +85,13 @@ func prepareTargetCommand(target *url.URL) ([]string, error) {
 	}
 }
 
+func listTargets() {
+	targets := viper.AllKeys()
+	for _, target := range targets {
+		fmt.Println(target)
+	}
+}
+
 func initConfig(name string) {
 	expanded := os.ExpandEnv(name)
 	viper.SetConfigFile(expanded)
@@ -102,12 +109,13 @@ func usage() {
 func main() {
 	flag.Usage = usage
 
+	list := flag.Bool("list", false, "List targets.")
 	resolve := flag.Bool("resolve", false, "Resolve command.")
 	configFile := flag.String("config", "$HOME/.axsrc.json", "Config file.")
 
 	flag.Parse()
 
-	if flag.NArg() < 1 {
+	if !*list && flag.NArg() < 1 {
 		flag.Usage()
 		os.Exit(1)
 	}
@@ -115,6 +123,11 @@ func main() {
 	target := flag.Arg(0)
 
 	initConfig(*configFile)
+
+	if *list {
+		listTargets()
+		return
+	}
 
 	url, err := resolveConfigTarget(target)
 	if err != nil {

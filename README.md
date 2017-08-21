@@ -34,6 +34,8 @@ ben at yggdrasil :: ./axs -h
 Usage: ./axs [OPTIONS] target
   -config string
         Config file. (default "$HOME/.axsrc.json")
+  -list
+        List targets.
   -resolve
         Resolve command.
 ```
